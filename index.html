@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- STUDENT LOGIN -->
+<!-- ================================================= -->
+
+<div class="page" id="loginPage">
+
+    <div class="login-card">
+
+        <h1>Student Dashboard</h1>
+
+        <p class="welcome">
+            Welcome back! Login to continue.
+        </p>
+
+
+        <form id="loginForm">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                required
+            >
+
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <p class="account-text">
+
+            Don't have an account?
+
+            <span onclick="showRegister()">
+                Create Account
+            </span>
+
+        </p>
+
+
+        <button
+            class="admin-login-btn"
+            onclick="showAdminLogin()">
+
+            👨‍💼 Admin Login
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- STUDENT REGISTER -->
+<!-- ================================================= -->
+
+<div class="page hidden" id="registerPage">
+
+    <div class="login-card">
+
+        <h1>Create Account</h1>
+
+        <p class="welcome">
+            Register your student account.
+        </p>
+
+
+        <form id="registerForm">
+
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label>Student ID</label>
+
+            <input
+                type="text"
+                id="studentId"
+                placeholder="Enter student ID"
+                required
+            >
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="studentEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label>Course / Class</label>
+
+            <input
+                type="text"
+                id="studentCourse"
+                placeholder="e.g. BCA / Class 12"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="studentPassword"
+                placeholder="Create a password"
+                required
+            >
+
+
+            <button type="submit">
+
+                Create Account
+
+            </button>
+
+        </form>
+
+
+        <p class="account-text">
+
+            Already have an account?
+
+            <span onclick="showLogin()">
+                Login
+            </span>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- ADMIN LOGIN -->
+<!-- ================================================= -->
+
+<div class="page hidden" id="adminLoginPage">
+
+    <div class="login-card">
+
+        <h1>👨‍💼 Admin Login</h1>
+
+        <p class="welcome">
+            Teacher / Admin Login
+        </p>
+
+
+        <form id="adminLoginForm">
+
+
+            <label>
+                Admin Username
+            </label>
+
+            <input
+                type="text"
+                id="adminUsername"
+                placeholder="Enter username"
+                required
+            >
+
+
+            <label>
+                Admin Password
+            </label>
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Enter password"
+                required
+            >
+
+
+            <button type="submit">
+
+                Admin Login
+
+            </button>
+
+        </form>
+
+
+        <p class="account-text">
+
+            <span onclick="showLogin()">
+
+                ← Back to Student Login
+
+            </span>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- STUDENT DASHBOARD -->
+<!-- ================================================= -->
+
+<div
+    class="dashboard hidden"
+    id="dashboardPage">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div>
+
+            <h1>
+                Student Dashboard
+            </h1>
+
+            <p>
+
+                Welcome,
+                <span id="dashboardName">
+                    Student
+                </span>
+                👋
+
+            </p>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ================================================= -->
+        <!-- PROFILE -->
+        <!-- ================================================= -->
+
+        <div class="profile-card">
+
+
+            <div class="profile-header">
+
+                <h2>
+                    👤 Student Profile
+                </h2>
+
+
+                <button
+                    class="edit-profile-btn"
+                    onclick="openEditProfile()">
+
+                    ✏️ Edit Profile
+
+                </button>
+
+            </div>
+
+
+
+            <div class="profile-content">
+
+
+                <div class="profile-photo-section">
+
+                    <img
+                        id="profilePhoto"
+                        class="profile-photo"
+                        src=""
+                        alt="Profile Photo"
+                    >
+
+                </div>
+
+
+
+                <div class="profile-info">
+
+
+                    <div>
+
+                        <strong>
+                            Name
+                        </strong>
+
+                        <p id="profileName">
+                            -
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Student ID
+                        </strong>
+
+                        <p id="profileId">
+                            -
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Email
+                        </strong>
+
+                        <p id="profileEmail">
+                            -
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Course
+                        </strong>
+
+                        <p id="profileCourse">
+                            -
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- EDIT PROFILE -->
+        <!-- ================================================= -->
+
+        <div
+            class="edit-profile-card hidden"
+            id="editProfileCard">
+
+
+            <h2>
+                ✏️ Edit Profile
+            </h2>
+
+
+            <form id="editProfileForm">
+
+
+                <label>
+                    Profile Photo
+                </label>
+
+
+                <input
+                    type="file"
+                    id="editPhoto"
+                    accept="image/*"
+                >
+
+
+                <label>
+                    Full Name
+                </label>
+
+
+                <input
+                    type="text"
+                    id="editName"
+                    required
+                >
+
+
+                <label>
+                    Student ID
+                </label>
+
+
+                <input
+                    type="text"
+                    id="editId"
+                    required
+                >
+
+
+                <label>
+                    Email
+                </label>
+
+
+                <input
+                    type="email"
+                    id="editEmail"
+                    required
+                >
+
+
+                <label>
+                    Course / Class
+                </label>
+
+
+                <input
+                    type="text"
+                    id="editCourse"
+                    required
+                >
+
+
+                <div class="edit-buttons">
+
+
+                    <button type="submit">
+
+                        💾 Save Changes
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeEditProfile()">
+
+                        Cancel
+
+                    </button>
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- DASHBOARD CARDS -->
+        <!-- ================================================= -->
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    📊 Attendance
+                </h3>
+
+                <p class="number">
+                    85%
+                </p>
+
+                <p>
+                    Good attendance
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    📝 Assignments
+                </h3>
+
+                <p
+                    class="number"
+                    id="assignmentCount">
+
+                    0
+
+                </p>
+
+                <p>
+                    Available
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    📖 Notes
+                </h3>
+
+                <p
+                    class="number"
+                    id="notesCount">
+
+                    0
+
+                </p>
+
+                <p>
+                    Available
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    📄 PYQs
+                </h3>
+
+                <p
+                    class="number"
+                    id="pyqCount">
+
+                    0
+
+                </p>
+
+                <p>
+                    Available
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- STUDY RESOURCES -->
+        <!-- ================================================= -->
+
+        <div class="resources">
+
+
+            <h2>
+                📚 Study Resources
+            </h2>
+
+
+            <div class="resource-tabs">
+
+
+                <button
+                    onclick="showResources('assignments')">
+
+                    📝 Assignments
+
+                </button>
+
+
+                <button
+                    onclick="showResources('notes')">
+
+                    📖 Subject Notes
+
+                </button>
+
+
+                <button
+                    onclick="showResources('pyqs')">
+
+                    📄 PYQs
+
+                </button>
+
+
+                <button
+                    onclick="showResources('questions')">
+
+                    ❓ Question Banks
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="resourceList"
+                class="resource-list">
+
+                <p>
+                    Select a category above.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- ADMIN DASHBOARD -->
+<!-- ================================================= -->
+
+<div
+    class="dashboard hidden"
+    id="adminDashboardPage">
+
+
+    <!-- ADMIN HEADER -->
+
+    <header>
+
+        <div>
+
+            <h1>
+                👨‍💼 Admin Dashboard
+            </h1>
+
+            <p>
+                Teacher / Admin Control Panel
+            </p>
+
+        </div>
+
+
+        <button
+            class="logout-btn"
+            onclick="adminLogout()">
+
+            Logout
+
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ================================================= -->
+        <!-- ADMIN STATS -->
+        <!-- ================================================= -->
+
+        <div class="admin-stats">
+
+
+            <div class="admin-stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h3>
+                        Total Students
+                    </h3>
+
+                    <p
+                        id="totalStudents"
+                        class="admin-number">
+
+                        0
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <h3>
+                        Total Materials
+                    </h3>
+
+                    <p
+                        id="totalMaterials"
+                        class="admin-number">
+
+                        0
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- STUDENT MANAGEMENT -->
+        <!-- ================================================= -->
+
+        <div class="students-card">
+
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        👥 Student Management
+                    </h2>
+
+                    <p>
+                        View and manage all student accounts
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="studentList"
+                class="student-list">
+
+                <p>
+                    No students registered yet.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- UPLOAD MATERIAL -->
+        <!-- ================================================= -->
+
+        <div class="upload-card">
+
+
+            <h2>
+                📤 Upload Study Material
+            </h2>
+
+
+            <form id="uploadForm">
+
+
+                <label>
+                    Material Type
+                </label>
+
+
+                <select
+                    id="materialType"
+                    required>
+
+
+                    <option value="">
+                        Select category
+                    </option>
+
+
+                    <option value="assignments">
+                        📝 Assignment
+                    </option>
+
+
+                    <option value="notes">
+                        📖 Subject Notes
+                    </option>
+
+
+                    <option value="pyqs">
+                        📄 PYQ
+                    </option>
+
+
+                    <option value="questions">
+                        ❓ Question Bank
+                    </option>
+
+
+                </select>
+
+
+
+                <label>
+                    Subject
+                </label>
+
+
+                <input
+                    type="text"
+                    id="materialSubject"
+                    placeholder="e.g. Mathematics"
+                    required
+                >
+
+
+
+                <label>
+                    Material Title
+                </label>
+
+
+                <input
+                    type="text"
+                    id="materialTitle"
+                    placeholder="e.g. Trigonometry Unit 1"
+                    required
+                >
+
+
+
+                <label>
+                    Select File
+                </label>
+
+
+                <input
+                    type="file"
+                    id="materialFile"
+                    required
+                >
+
+
+
+                <button type="submit">
+
+                    📤 Upload Material
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- ADMIN MATERIALS -->
+        <!-- ================================================= -->
+
+        <div class="admin-materials">
+
+
+            <h2>
+                📚 Uploaded Materials
+            </h2>
+
+
+            <div
+                id="adminMaterialList">
+
+                <p>
+                    No materials uploaded yet.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
